@@ -4,6 +4,7 @@
 // 2. Include any default variable overrides here
 $link-decoration: none;
 
+
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/variables-dark";
@@ -11,6 +12,8 @@ $link-decoration: none;
 // 4. Include any default map overrides here
 $custom-colors: (
 	"farve": $cyan-400,
+	"primaryBlue": #74CEE4,
+	"topper": #21212E,
 );
 
 $theme-colors: map-merge($theme-colors, $custom-colors);
@@ -18,3 +21,23 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "bootstrapComponents";
 
 // 5. Du kan lave styling her...
+@keyframes blinker {
+	50% { opacity: 0; }
+}
+#colon {
+	animation: blinker 1s linear infinite;
+
+}
+.darker{
+	background-color: #21212E;
+}
+.booked{
+	background-color: #F9A456;
+}
+.open{
+	background-color: #74CEE4;
+}
+
+gradient1{
+
+}
