@@ -3,7 +3,8 @@
 
 // 2. Include any default variable overrides here
 $link-decoration: none;
-
+$primary: #74CEE4;
+$secondary: #4f8244;
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../node_modules/bootstrap/scss/variables";
@@ -11,9 +12,8 @@ $link-decoration: none;
 
 // 4. Include any default map overrides here
 $custom-colors: (
-	"farve": $cyan-400,
-	"primaryBlue": #74CEE4,
-	"topper": #21212E,
+        "farve": $cyan-400,
+        "topper": #21212E,
 );
 
 $theme-colors: map-merge($theme-colors, $custom-colors);
@@ -22,22 +22,45 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 
 // 5. Du kan lave styling her...
 @keyframes blinker {
-	50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
+
 #colon {
-	animation: blinker 1s linear infinite;
+  animation: blinker 1s linear infinite;
 
 }
-.darker{
-	background-color: #21212E;
-}
-.booked{
-	background-color: #F9A456;
-}
-.open{
-	background-color: #74CEE4;
+
+.darker {
+  background-color: #21212E;
 }
 
-gradient1{
+.booked {
+  background-color: #F9A456;
+}
 
+.open {
+  background-color: #74CEE4;
+}
+
+
+
+.weekDaysBox {
+  width: 120px;
+}
+
+.monthDateBox {
+  width: 120px;
+  height: 100px;
+}
+
+@media (min-width: 1200px) {
+  .weekDaysBox {
+    width: 140px;
+  }
+  .monthDateBox {
+    width: 140px;
+    height: 120px;
+  }
 }
