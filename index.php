@@ -19,13 +19,24 @@ require "settings/init.php";
 
 <body>
 <div class="container-fluid">
-    <div class="row bg-dark mb-5">
-        <div class="col d-flex flex-row row-cols-3 fs-3 text-light mb-2 pt-2 pb-2">
-            <div class="fw-bold text-center">Logo</div>
-            <div class="text-center" id="time">12:34</div>
-            <div class="text-center">CAL+HOME</div>
+    <div class="row bg-dark">
+        <div class="col d-flex flex-row fs-3 text-light pt-2 pb-2">
+            <div class="fw-bold d-flex justify-content-center col-4">
+                <div class="col-4">
+                    <a href="index.php"><img class="img-fluid" src="images/logo.png" alt=""></a></div>
+            </div>
+            <div class="text-center col-4" id="date"><p class="fs-1 m-0 mt-2 text-weekdays" id="time"></p></div>
+            <div class="col-4 d-flex justify-content-center">
+                <div class="col-2 m-2 me-4" id="btnCal">
+                    <a href="calendar.php"><img class="img-fluid" src="images/cal-icon.png" alt=""></a>
+                </div>
+                <div class="col-2 m-2" id="btnHome">
+                    <a href="index.php"><img class="img-fluid" src="images/home-icon.png" alt=""></a>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 
 
     <div class="row mt-5 justify-content-center flex-wrap" id="meetingRoom">
