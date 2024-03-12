@@ -19,7 +19,7 @@ require "settings/init.php";
 
 <body>
 <div class="container-fluid">
-    <div class="row bg-dark">
+    <div class="row bg-dark mb-5">
         <div class="col d-flex flex-row row-cols-3 fs-3 text-light mb-2 pt-2 pb-2">
             <div class="fw-bold text-center">Logo</div>
             <div class="text-center" id="time">12:34</div>
@@ -28,101 +28,235 @@ require "settings/init.php";
     </div>
 
 
+    <div class="row mt-5 justify-content-center flex-wrap" id="meetingRoom">
 
-    <div class="row mt-1">
-        <div class="col p-3 m-2 d-flex justify-content-center flex-row flex-wrap" id="washingTimes">
-            <?php
-            $washtimes = $db->sql("SELECT * FROM washtimes INNER JOIN washstatus ON washTimeStatusId = washStatusId");
-            foreach($washtimes as $washTime) {
-                ?>
-                <div class="m-3 col-5 bg-primaryBlue">
-                    <div class="text-light fs-2 text-center">
-                        <div>
-                            <?php
-                            echo $cleantime=substr($washTime -> washTimeStart,0,-3)." - ".$cleantime=substr($washTime -> washTimeEnd,0,-3);
-                            ?>
-                        </div>
-                    </div>
-                    <div class="row text-center fs-4 text-light mt-1">
-                        <div id="booked">
-                            <?php
-                            echo $washTime->washCurrentStatus;
-                            ?>
-                        </div>
+        <div type="button" id="bookBtn1" class="timeBtn bg-primary rounded-3 col-5 p-1 m-2" data-bs-toggle="modal" data-bs-target="#logIn">
+            <div class="col-5 mx-auto text-light py-3">
+                <div class="" id="card1">
+                    <div class="fw-bold fs-4 text-center">07:00 - 09:00</div>
+                    <div id="status1" class="text-center">
+                        <span>Optaget</span>
+                        <span>Ledigt</span>
                     </div>
                 </div>
-
-        <?php }?>
-
-            <!-- Til viceværtens skærm
-            <div class="w-50 mx-auto text-light py-3" id="occupied2">
-                <div class="text-center mb-2">Optaget af:</div>
-                <div class="card text-light">
-                    <div class="row g-0 justify-content-center">
-                        <div class="col-auto">
-                            <div class="card-body" id="card2">
-                                <div class="card-text fw-bold">07:00 - 09:00</div>
-                                <div class="card-text">4, st. 2</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            -->
-
-            <!--
-            KNAP TIL BOOK
-            <div class="position-absolute bottom-0 start-50 translate-middle mb-3">
-                <button type="button" id="bookBtn" class="btn btn-light btn-lg px-5 rounded-5" data-bs-toggle="modal" data-bs-target="#bookRoom">Book</button>
-            </div>
-            -->
-        </div>
-    </div>
-</div>
-
-<!--booking modal
-<div class="modal" id="bookRoom" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Opret booking</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label for="startTime">Fra:</label>
-                    <input type="time" id="startTime" class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="endTime">Til:</label>
-                    <input type="time" id="endTime" class="form-control">
-                </div>
-
-                <div class="mb-3">
-                    <label for="selectDepartment">Vælg afdeling:</label>
-                    <select id="selectDepartment" class="form-select">
-                        <option value="Salgsafdeling">Salgsafdeling</option>
-                        <option value="IT-afdeling">IT-afdeling</option>
-                    </select>
-                </div>
-
-                <div class="mb-3">
-                    <label for="names">Indtast navne:</label>
-                    <input type="text" id="names" class="form-control">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Luk</button>
-                <button type="button" class="btn btn-primary" id="createBookingBtn" data-bs-dismiss="modal">Opret</button>
             </div>
         </div>
-    </div>
-</div> -->
+        <div type="button" id="bookBtn2" class="timeBtn bg-primary rounded-3 col-5 p-1 m-2" data-bs-toggle="modal" data-bs-target="#logIn">
+            <div class="col-5 mx-auto text-light py-3">
+                <div class="" id="card1">
+                    <div class="fw-bold fs-4 text-center">09:00 - 11:00</div>
+                    <div id="status2" class="text-center">
+                        <span>Optaget</span>
+                        <span>Ledigt</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div type="button" id="bookBtn3" class="timeBtn bg-primary rounded-3 col-5 p-1 m-2" data-bs-toggle="modal" data-bs-target="#logIn">
+            <div class="col-5 mx-auto text-light py-3">
+                <div class="" id="card1">
+                    <div class="fw-bold fs-4 text-center">11:00 - 13:00</div>
+                    <div id="status3" class="text-center">
+                        <span>Optaget</span>
+                        <span>Ledigt</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div type="button" id="bookBtn4" class="timeBtn bg-primary rounded-3 col-5 p-1 m-2" data-bs-toggle="modal" data-bs-target="#logIn">
+            <div class="col-5 mx-auto text-light py-3">
+                <div class="" id="card1">
+                    <div class="fw-bold fs-4 text-center">13:00 - 15:00</div>
+                    <div id="status4" class="text-center">
+                        <span>Optaget</span>
+                        <span>Ledigt</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div type="button" id="bookBtn5" class="timeBtn bg-primary rounded-3 col-5 p-1 m-2" data-bs-toggle="modal" data-bs-target="#logIn">
+            <div class="col-5 mx-auto text-light py-3">
+                <div class="" id="card1">
+                    <div class="fw-bold fs-4 text-center">15:00 - 17:00</div>
+                    <div id="status5" class="text-center">
+                        <span>Optaget</span>
+                        <span>Ledigt</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div type="button" id="bookBtn6" class="timeBtn bg-primary rounded-3 col-5 p-1 m-2" data-bs-toggle="modal" data-bs-target="#logIn">
+            <div class="col-5 mx-auto text-light py-3">
+                <div class="" id="card1">
+                    <div class="fw-bold fs-4 text-center">17:00 - 19:00</div>
+                    <div id="status6" class="text-center">
+                        <span>Optaget</span>
+                        <span>Ledigt</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div type="button" id="bookBtn7" class="timeBtn bg-primary rounded-3 col-5 p-1 m-2" data-bs-toggle="modal" data-bs-target="#logIn">
+            <div class="col-5 mx-auto text-light py-3">
+                <div class="" id="card1">
+                    <div class="fw-bold fs-4 text-center">19:00 - 21:00</div>
+                    <div id="status7" class="text-center">
+                        <span>Optaget</span>
+                        <span>Ledigt</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div type="button" id="bookBtn8" class="timeBtn bg-primary rounded-3 col-5 p-1 m-2" data-bs-toggle="modal" data-bs-target="#logIn">
+            <div class="col-5 mx-auto text-light py-3">
+                <div class="" id="card1">
+                    <div class="fw-bold fs-4 text-center">21:00 - 23:00</div>
+                    <div id="status8" class="text-center">
+                        <span>Optaget</span>
+                        <span>Ledigt</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+    </div>
+
+    <div class="modal" id="logIn" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Log ind</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="username">Bruger</label>
+                            <input type="text" class="form-control" id="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Adgangskode</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-secondary">Log ind</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <div class="modal" id="bookTime" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Du er ved at booke</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 mt-1">
+                        <h4>Tid:</h4>
+                        <h4 id="washTime">00:00 - 00:00</h4>
+                    </div>
+                    <div class="mb-3 mt-2">
+                        <h5>Antal maskiner: 4</h5>
+                        <h5>Tørretumbler: Ja</h5>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Luk</button>
+                    <button type="button" class="btn btn-secondary" id="createBookingInSystem" data-bs-dismiss="modal">Opret</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="occupiedModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tiden er optaget</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Tiden er desværre optaget, log ind for at aflyse din tid</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Luk</button>
+                    <button type="button" class="btn btn-secondary" id="cancelBookingBtn">Aflys tid</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+
+    const statusTime1 = document.querySelector('#status1');
+    const statusTime2 = document.querySelector('#status2');
+    const statusTime3 = document.querySelector('#status3');
+    const statusTime4 = document.querySelector('#status4');
+    const statusTime5 = document.querySelector('#status5');
+    const statusTime6 = document.querySelector('#status6');
+    const statusTime7 = document.querySelector('#status7');
+    const statusTime8 = document.querySelector('#status8');
+
+    const bookBtn1 = document.querySelector('#bookBtn1');
+    const bookBtn2 = document.querySelector('#bookBtn2');
+    const bookBtn3 = document.querySelector('#bookBtn3');
+    const bookBtn4 = document.querySelector('#bookBtn4');
+    const bookBtn5 = document.querySelector('#bookBtn5');
+    const bookBtn6 = document.querySelector('#bookBtn6');
+    const bookBtn7 = document.querySelector('#bookBtn7');
+    const bookBtn8 = document.querySelector('#bookBtn8');
+
+    const washTime = document.querySelector('#washTime');
+
+    const createBooking = document.querySelector('#createBookingInSystem')
+    const timeBtn = document.querySelectorAll('.timeBtn');
+
+    let bookedButtonId = "";
+
+
+    timeBtn.forEach(button => {
+        button.addEventListener('click', function() {
+            const buttonId = this.id;
+
+            if (buttonId === 'bookBtn1') {
+                washTime.innerHTML = '07:00-09:00';
+            } else if (buttonId === 'bookBtn2') {
+                washTime.innerHTML = '09:00-11:00';
+            } else if (buttonId === 'bookBtn3') {
+                washTime.innerHTML = '11:00-13:00';
+            }else if (buttonId === 'bookBtn4') {
+                washTime.innerHTML = '13:00-15:00';
+            }else if (buttonId === 'bookBtn5') {
+                washTime.innerHTML = '15:00-17:00';
+            }else if (buttonId === 'bookBtn6') {
+                washTime.innerHTML = '17:00-19:00';
+            }else if (buttonId === 'bookBtn7') {
+                washTime.innerHTML = '19:00-21:00';
+            }else if (buttonId === 'bookBtn8') {
+                washTime.innerHTML = '21:00-23:00';
+            }
+            bookedButtonId = buttonId;
+        });
+    });
+
+    createBooking.addEventListener('click', () => {
+        const bookedButton = document.getElementById(bookedButtonId);
+        bookedButton.classList.remove('bg-primary');
+        bookedButton.classList.add('bg-secondary');
+        bookedButton.classList.add('occupied');
+    });
+
+
+
+
 
     const time = document.querySelector('#time');
 
@@ -137,9 +271,61 @@ require "settings/init.php";
     }
     showTime()
 
-    function showOccupancy(){
+    // forslag til brugere, dummy data
+    const users = [
+        { username: '9st1', password: '9st1' },
+        { username: '9st2', password: '9st2' },
+        { username: '9st3', password: '9st3' },
+        { username: '9st4', password: '9st4' },
+        { username: '911', password: '911' },
+        { username: '912', password: '912' },
+        { username: '913', password: '913' },
+        { username: '914', password: '914' },
+        { username: '921', password: '921' },
+        { username: '922', password: '922' },
+        { username: '923', password: '923' },
+        { username: '924', password: '924' },
+    ];
 
-    }
+    // behandler log in informationen
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Tjekker om brugernavn og adgangskode stemmer overens med en bruger i systemet
+        const user = users.find(u => u.username === username && u.password === password);
+        if (user) {
+            document.getElementById('logIn').classList.remove('show'); // Hide the login modal
+            document.getElementById('logIn').setAttribute('aria-hidden', 'true');
+            document.getElementById('logIn').setAttribute('style', 'display: none');
+            document.getElementById('bookTime').classList.add('show'); // Show the bookTime modal
+            document.getElementById('bookTime').setAttribute('aria-hidden', 'false');
+            document.getElementById('bookTime').setAttribute('style', 'display: block');
+        } else {
+            alert('Forkert kode');
+        }
+    });
+    document.getElementById('bookTime').querySelector('.btn-close').addEventListener('click', () =>{
+        document.getElementById('bookTime').classList.remove('show');
+        document.getElementById('bookTime').setAttribute('aria-hidden', 'true');
+        document.getElementById('bookTime').setAttribute('style', 'display: none');
+    });
+
+    // Add event listener to "Opret" button on bookTime modal
+    document.getElementById('createBookingInSystem').addEventListener('click', () =>{
+        document.getElementById('bookTime').classList.remove('show');
+        document.getElementById('bookTime').setAttribute('aria-hidden', 'true');
+        document.getElementById('bookTime').setAttribute('style', 'display: none');
+        document.querySelector('.modal-backdrop').remove();
+    });
+
+    document.getElementById('bookTime').querySelector('.btn-light').addEventListener('click', () =>{
+        document.getElementById('bookTime').classList.remove('show');
+        document.getElementById('bookTime').setAttribute('aria-hidden', 'true');
+        document.getElementById('bookTime').setAttribute('style', 'display: none');
+        document.querySelector('.modal-backdrop').remove();
+    });
 
 </script>
 </body>

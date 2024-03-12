@@ -3,6 +3,11 @@
 
 // 2. Include any default variable overrides here
 $link-decoration: none;
+$primary: #74CEE4;
+$secondary: #FFA553;
+$danger: #BF712A;
+$info: #21212E;
+
 
 
 // 3. Include remainder of required Bootstrap stylesheets
@@ -13,7 +18,7 @@ $link-decoration: none;
 $custom-colors: (
 	"farve": $cyan-400,
 	"primaryBlue": #74CEE4,
-	"topper": #21212E,
+	"weekdays": #0FA0B6,
 );
 
 $theme-colors: map-merge($theme-colors, $custom-colors);
@@ -38,6 +43,21 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 	background-color: #74CEE4;
 }
 
-gradient1{
+.weekDaysBox {
+	width: 120px;
+}
 
+.monthDateBox {
+	width: 120px;
+	height: 100px;
+}
+
+@media (min-width: 1200px) {
+	.weekDaysBox {
+		width: 140px;
+	}
+	.monthDateBox {
+		width: 140px;
+		height: 120px;
+	}
 }
