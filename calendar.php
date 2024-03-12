@@ -20,14 +20,23 @@ require "settings/init.php";
 <body>
 <div class="container-fluid">
     <div class="row bg-dark">
-        <div class="col d-flex flex-row row-cols-3 fs-3 text-light mb-2 pt-2 pb-2">
-            <div class="fw-bold text-center">Logo</div>
-            <div class="text-center" id="date">Marts 2024</div>
-            <div class="text-center" id="btnCal">CAL+HOME</div>
+        <div class="col d-flex flex-row fs-3 text-light pt-2 pb-2">
+            <div class="fw-bold d-flex justify-content-center col-4">
+                <div class="col-4">
+                    <a href="index.php"><img class="img-fluid" src="images/logo.png" alt=""></a></div>
+            </div>
+            <div class="text-center col-4" ><p class="fs-1 m-0 mt-2 text-weekdays" id="date">Marts 2024</p></div>
+            <div class="col-4 d-flex justify-content-center">
+                <div class="col-2 m-2 me-4" id="btnCal">
+                    <a href="calendar.php"><img class="img-fluid" src="images/cal-icon.png" alt=""></a>
+                </div>
+                <div class="col-2 m-2" id="btnHome">
+                    <a href="index.php"><img class="img-fluid" src="images/home-icon.png" alt=""></a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
 
 <div class="container mt-3" id="calendar">
     <div class="row justify-content-between">
@@ -65,13 +74,16 @@ require "settings/init.php";
                 ?>
             </div>
         <?php } ?>
-        <div class="bg-primaryBlue monthDateBox rounded-3 align-items-center text-center m-1 p-3 fs-1 text-info" id="btn15">
+        <div class="bg-primaryBlue monthDateBox rounded-3 align-items-center text-center m-1 p-3 fs-1 text-info"
+             id="btn15">
             15
         </div>
-        <div class="bg-primaryBlue monthDateBox rounded-3 align-items-center text-center m-1 p-3 fs-1 text-info" id="btn16">
+        <div class="bg-primaryBlue monthDateBox rounded-3 align-items-center text-center m-1 p-3 fs-1 text-info"
+             id="btn16">
             16
         </div>
-        <div class="bg-primaryBlue monthDateBox rounded-3 align-items-center text-center m-1 p-3 fs-1 text-info" id="btn17">
+        <div class="bg-primaryBlue monthDateBox rounded-3 align-items-center text-center m-1 p-3 fs-1 text-info"
+             id="btn17">
             17
         </div>
         <?php
@@ -95,7 +107,7 @@ require "settings/init.php";
             $washtimes = $db->sql("SELECT * FROM washtimes INNER JOIN washstatus ON washTimeStatusId = washStatusId WHERE washTimeDate = 15");
             foreach ($washtimes as $washTime) {
                 ?>
-                <div class="m-3 col-5 bg-primary rounded-3">
+                <div class="m-3 col-5 bg-primary rounded-3 <?php echo ($washTime->washTimeStatusId == 1) ? "bg-primary" : "bg-secondary"; ?>">
                     <div class="text-light fs-2 text-center">
                         <div>
                             <?php
@@ -122,7 +134,7 @@ require "settings/init.php";
             $washtimes = $db->sql("SELECT * FROM washtimes INNER JOIN washstatus ON washTimeStatusId = washStatusId WHERE washTimeDate = 16");
             foreach ($washtimes as $washTime) {
                 ?>
-                <div class="m-3 col-5 bg-primary rounded-3">
+                <div class="m-3 col-5 bg-primary rounded-3 <?php echo ($washTime->washTimeStatusId == 1) ? "bg-primary" : "bg-secondary"; ?>">
                     <div class="text-light fs-2 text-center">
                         <div>
                             <?php
@@ -149,7 +161,7 @@ require "settings/init.php";
             $washtimes = $db->sql("SELECT * FROM washtimes INNER JOIN washstatus ON washTimeStatusId = washStatusId WHERE washTimeDate = 17");
             foreach ($washtimes as $washTime) {
                 ?>
-                <div class="m-3 col-5 bg-primary rounded-3">
+                <div class="m-3 col-5 bg-primary rounded-3 <?php echo ($washTime->washTimeStatusId == 1) ? "bg-primary" : "bg-secondary"; ?>">
                     <div class="text-light fs-2 text-center">
                         <div>
                             <?php
@@ -253,8 +265,6 @@ require "settings/init.php";
             element.classList.add('bg-primary');
         }
     });
-
-
 
 
 </script>

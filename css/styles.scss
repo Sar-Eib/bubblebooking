@@ -9,16 +9,15 @@ $danger: #BF712A;
 $info: #21212E;
 
 
-
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/variables-dark";
 
 // 4. Include any default map overrides here
 $custom-colors: (
-	"farve": $cyan-400,
-	"primaryBlue": #74CEE4,
-	"weekdays": #0FA0B6,
+        "farve": $cyan-400,
+        "primaryBlue": #74CEE4,
+        "weekdays": #0FA0B6,
 );
 
 $theme-colors: map-merge($theme-colors, $custom-colors);
@@ -26,38 +25,89 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "bootstrapComponents";
 
 // 5. Du kan lave styling her...
-@keyframes blinker {
-	50% { opacity: 0; }
+body {
+  background-image: url("../images/background-image.png");
 }
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
 #colon {
-	animation: blinker 1s linear infinite;
+  animation: blinker 1s linear infinite;
 
 }
-.darker{
-	background-color: #21212E;
+
+.darker {
+  background-color: #21212E;
 }
-.booked{
-	background-color: #F9A456;
+
+.booked {
+  background-color: #F9A456;
 }
-.open{
-	background-color: #74CEE4;
+
+.open {
+  background-color: #74CEE4;
 }
+
 
 .weekDaysBox {
-	width: 120px;
+  width: 60px;
 }
 
 .monthDateBox {
-	width: 120px;
-	height: 100px;
+  width: 60px;
+  height: 40px;
+}
+
+@media (min-width: 576px) {
+  .weekDaysBox {
+    width: 60px;
+  }
+  .monthDateBox {
+    width: 60px;
+    height: 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  .weekDaysBox {
+    width: 90px;
+  }
+  .monthDateBox {
+    width: 90px;
+    height: 70px;
+  }
+}
+
+@media (min-width: 992px) {
+  .weekDaysBox {
+    width: 120px;
+  }
+  .monthDateBox {
+    width: 120px;
+    height: 100px;
+  }
 }
 
 @media (min-width: 1200px) {
-	.weekDaysBox {
-		width: 140px;
-	}
-	.monthDateBox {
-		width: 140px;
-		height: 120px;
-	}
+  .weekDaysBox {
+    width: 140px;
+  }
+  .monthDateBox {
+    width: 140px;
+    height: 120px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .weekDaysBox {
+    width: 160px;
+  }
+  .monthDateBox {
+    width: 160px;
+    height: 140px;
+  }
 }
