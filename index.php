@@ -154,7 +154,7 @@ require "settings/init.php";
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Du er ved at booke</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" id="closeBookTop" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3 mt-1">
@@ -167,7 +167,7 @@ require "settings/init.php";
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Luk</button>
+                    <button type="button" class="btn btn-light" id="closeBookModal" data-bs-dismiss="modal">Luk</button>
                     <button type="button" class="btn btn-secondary" id="createBookingInSystem" data-bs-dismiss="modal">Opret</button>
                 </div>
             </div>
@@ -255,9 +255,6 @@ require "settings/init.php";
     });
 
 
-
-
-
     const time = document.querySelector('#time');
 
     function showTime(){
@@ -287,43 +284,54 @@ require "settings/init.php";
         { username: '924', password: '924' },
     ];
 
+    const logInForm = document.querySelector('#loginForm');
+    const logInModal = document.querySelector('#logIn');
+    const modalBookClose = document.querySelector('#closeBookModal');
+    const modalCloseTop = document.querySelector('#closeBookTop');
+    const bookModal = document.querySelector('#bookTime');
+
     // behandler log in informationen
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent form submission
+    logInForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // ingen form submission
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
         // Tjekker om brugernavn og adgangskode stemmer overens med en bruger i systemet
         const user = users.find(u => u.username === username && u.password === password);
         if (user) {
-            document.getElementById('logIn').classList.remove('show'); // Hide the login modal
-            document.getElementById('logIn').setAttribute('aria-hidden', 'true');
-            document.getElementById('logIn').setAttribute('style', 'display: none');
-            document.getElementById('bookTime').classList.add('show'); // Show the bookTime modal
-            document.getElementById('bookTime').setAttribute('aria-hidden', 'false');
-            document.getElementById('bookTime').setAttribute('style', 'display: block');
+            logInModal.classList.remove('show'); // Hide the login modal
+            logInModal.setAttribute('aria-hidden', 'true');
+            logInModal.setAttribute('style', 'display: none');
+            bookModal.classList.add('show'); // Show the bookTime modal
+            bookModal.setAttribute('aria-hidden', 'false');
+            bookModal.setAttribute('style', 'display: block');
         } else {
             alert('Forkert kode');
         }
     });
-    document.getElementById('bookTime').querySelector('.btn-close').addEventListener('click', () =>{
-        document.getElementById('bookTime').classList.remove('show');
-        document.getElementById('bookTime').setAttribute('aria-hidden', 'true');
-        document.getElementById('bookTime').setAttribute('style', 'display: none');
-    });
 
-    // Add event listener to "Opret" button on bookTime modal
-    document.getElementById('createBookingInSystem').addEventListener('click', () =>{
-        document.getElementById('bookTime').classList.remove('show');
-        document.getElementById('bookTime').setAttribute('aria-hidden', 'true');
-        document.getElementById('bookTime').setAttribute('style', 'display: none');
+
+
+    modalCloseTop.addEventListener('click', () =>{
+        bookModal.classList.remove('show');
+        bookModal.setAttribute('aria-hidden', 'true');
+        bookModal.setAttribute('style', 'display: none');
         document.querySelector('.modal-backdrop').remove();
     });
 
-    document.getElementById('bookTime').querySelector('.btn-light').addEventListener('click', () =>{
-        document.getElementById('bookTime').classList.remove('show');
-        document.getElementById('bookTime').setAttribute('aria-hidden', 'true');
-        document.getElementById('bookTime').setAttribute('style', 'display: none');
+    // Add event listener to "Opret" button on bookTime modal
+    createBooking.addEventListener('click', () =>{
+        bookModal.classList.remove('show');
+        bookModal.setAttribute('aria-hidden', 'true');
+        bookModal.setAttribute('style', 'display: none');
+        document.querySelector('.modal-backdrop').remove();
+    });
+
+
+    modalBookClose.addEventListener('click', () =>{
+        bookModal.classList.remove('show');
+        bookModal.setAttribute('aria-hidden', 'true');
+        bookModal.setAttribute('style', 'display: none');
         document.querySelector('.modal-backdrop').remove();
     });
 
