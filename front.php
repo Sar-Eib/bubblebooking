@@ -1,3 +1,7 @@
+<!-- DENNE SIDE INDEHOLDER FUNKTIONER DER IKKE ER ANVENDT ELLER SOM ER ÆNDRET UNDERVEJS -->
+
+
+
 <?php
 require "settings/init.php";
 ?>
@@ -183,9 +187,6 @@ require "settings/init.php";
     }
     showTime()
 
-    function showOccupancy(){
-
-    }
 
 </script>
 </body>

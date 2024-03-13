@@ -19,7 +19,7 @@ require "settings/init.php";
 
 <body>
 <div class="container-fluid">
-    <div class="row bg-dark">
+    <div class="row gradientTop">
         <div class="col d-flex flex-row fs-3 text-light pt-2 pb-2">
             <div class="fw-bold d-flex justify-content-center col-4">
                 <div class="col-4">

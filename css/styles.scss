@@ -52,6 +52,14 @@ body {
   background-color: #74CEE4;
 }
 
+.gradientTop{
+  background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(0,0,0,1) 36%, rgba(82,80,80,1) 100%);
+}
+
+.timeCard{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 
 .weekDaysBox {
   width: 60px;
